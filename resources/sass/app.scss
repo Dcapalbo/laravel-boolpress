@@ -1,8 +1,17 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
 
-// Variables
-@import 'variables';
+// importing Partials
+@import 'Partials/variables.scss';
+@import 'Partials/mixin.scss';
+@import 'Partials/common.scss';
+@import 'Partials/header.scss';
+@import 'Partials/main.scss';
+@import 'Partials/footer.scss';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+
+

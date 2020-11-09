@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
-use App\Post;
 use App\User;
 
 class PostController extends Controller
@@ -15,7 +15,9 @@ class PostController extends Controller
      */
     public function index()
     {
+        // take all the users from the model
         $users = User::all();
+        // return the index view
         return view('admin.index', compact('users'));
     }
 
@@ -26,7 +28,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        // return the create view
+        return view('admin.create');
     }
 
     /**
@@ -37,7 +40,30 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        {   
+            // requesting all data
+            $data = $request->all();
+            // make back-end validations
+            $request->validate(
+                [
+                    "name" => "required|max:100",
+                    "email"=> "required|unique:users|max:100",
+                    "password"=> "required|max:150",
+                ]
+            );
+            // make user object instance
+            $user = new User;
+            
+            $user->name = $data["name"];
+            $user->email = $data["email"];
+            $user->password = $data["password"];
+            
+            // save the object modify
+            $user->save();
+
+            // redirect the objects to the index route
+            return redirect()->route("admin.index");
+        }
     }
 
     /**
@@ -48,7 +74,10 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        // find a single objetc with the find method
+        $user = User::find();
+        // return the show view
+        return view("admin.show", compact("user"));
     }
 
     /**
@@ -59,7 +88,8 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        // return the edit view for the single object id
+        return view('admin.edit', compact('user'));
     }
 
     /**
@@ -70,8 +100,33 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
+    {   
+        // request all objects data
+        $data = $request->all();
+        // find a specific object
+        $user = User::find($id);
+            // make validations
+            $request->validate(
+                [
+                    "name" => "required|max:100",
+                    "email"=> ["required",
+                                Rule::unique('users')->ignore($id),
+                                "max:300"
+                              ],
+                    "password"=> "required|max:150",
+                ]
+            );
+            // make an objects instance
+            $user = new User;
+    
+            $user->name = $data["name"];
+            $user->email = $data["email"];
+            $user->password = $data["password"];
+            
+            // save the specific object
+            $user->save();
+
+            return redirect()->route("admit.index", $id);
     }
 
     /**
@@ -82,6 +137,11 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // find a specific object
+        $user = User::find($id);
+        // delete the selected object
+        $user->delete();
+        // redirect index route
+        return redirect()->route("admin.index");
     }
 }

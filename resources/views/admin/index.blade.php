@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    Admin.home
+    Admin
 @endsection
 @section('content')
 <div class="container">

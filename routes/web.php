@@ -22,6 +22,7 @@ Auth::routes();
 Route::prefix('admin')->name('admin')->namespace('Admin')->middleware('auth')->group(function() {
     Route::resource('users', 'PostController');
 });
+
 Route::prefix('guest')->name('guest')->namespace('Guest')->middleware('auth')->group(function() {
     Route::resource('posts', 'PostController');
 });
