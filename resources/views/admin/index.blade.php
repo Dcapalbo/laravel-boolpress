@@ -20,7 +20,7 @@
             <td>{{$post->title}}</td>
             <td>{{$post->description}}</td>
             <td>{{$post->slug}}</td>
-            <td>{{$post->image}}</td>
+            <td><img src="{{asset('storage/'.$post->image)}}" alt="image" width="400" height="200"></td>
             <td><a href="{{route('admin.posts.show', $post->id)}}" target="_blank">View Post</a></td>
             <td><a href="{{route('admin.posts.edit', $post->id)}}" target="_blank">Edit Post</a></td>
             <td><form action="{{route("admin.posts.destroy", $post->id)}}" method="POST">
@@ -35,5 +35,4 @@
   </table>
   <a href="{{route('admin.posts.create')}}" target="_blank">Create Post</a>
 </div>
-
 @endsection

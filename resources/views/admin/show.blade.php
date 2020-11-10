@@ -19,7 +19,7 @@
             <td>{{$post->title}}</td>
             <td>{{$post->slug}}</td>
             <td>{{$post->description}}</td>
-            <td>{{$post->image}}</td>
+            <td><img src="{{asset('storage/'.$post->image)}}" alt="image" width="400" height="200"></td>
             <td><form action="{{route("admin.posts.destroy", $post->id)}}" method="POST">
                 @csrf
                 @method("DELETE")

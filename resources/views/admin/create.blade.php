@@ -19,10 +19,10 @@
         <label for="description">Description</label>
         <textarea class="form-control" name="description" id="description" placeholder="insert your description" cols="50" rows="10" value="{{old('description')}}"></textarea>
     </div>
-    {{-- <div class="form-group">
+    <div class="form-group">
         <label for="image">Image</label>
         <input type="file" class="form-control" name="image" id="image" value="image" placeholder="insert image"  accept="image/*">
-    </div> --}}
+    </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
   @if ($errors->any())

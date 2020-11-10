@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use App\Post;
 use App\User;
 
@@ -53,16 +54,17 @@ class PostController extends Controller
                     "title" => "required|max:100",
                     "slug"=> "required|unique:posts|max:100",
                     "description" => "required",
-                    // "image" => "image|max:200"
+                    "image" => "image"
                 ]
             );
             // make user object instance
             $post = new Post;
-
+            $path = Storage::disk("public")->put("images", $data["image"]);
             $post->user_id = $user_id;
             $post->title = $data["title"];
             $post->slug = $data["slug"];
             $post->description = $data["description"];
+            $post->image = $path;
             // $post->image = $data["image"];
             
             // save the object modify
@@ -120,13 +122,12 @@ class PostController extends Controller
                                 "max:100"
                              ], 
                     "description" => "required",
-                    // "image" => "image|max:200"
+                    "image" => "image"
                 ]
             );
         
             // find a specific object
             $post = Post::find($id);
-
             $post->title = $data["title"];
             $post->slug = $data["slug"];
             $post->description = $data["description"];
