@@ -4,9 +4,9 @@
 @endsection
 @section('content')
 <div class="container">
-  <form action="{{route('admin.posts.store')}}" method="POST" enctype="multipart/form-data">
+  <form action="{{route('admin.posts.update', $post->id)}}" method="POST" enctype="multipart/form-data">
     @csrf
-    @method('POST')
+    @method('PUT')
     <div class="form-group">
       <label for="title">Title</label>
       <input type="title" name="title" class="form-control" id="title" placeholder="insert your title">
@@ -23,7 +23,7 @@
         <label for="image">Image</label>
         <input type="file" class="form-control" name="image" id="image" value="image" placeholder="insert image"  accept="image/*">
     </div> --}}
-    <button type="submit" class="btn btn-primary">Create Post</button>
+    <button type="submit" class="btn btn-primary">Edit</button>
   </form>
   @if ($errors->any())
     <div class="alert alert-danger">

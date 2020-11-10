@@ -11,6 +11,7 @@
         <th scope="col">Description</th>
         <th scope="col">Slug</th>
         <th scope="col">Image</th>
+        <th scope="col">Delete Post</th>
       </tr>
     </thead>
     <tbody>
@@ -20,9 +21,16 @@
             <td>{{$post->description}}</td>
             <td>{{$post->slug}}</td>
             <td>{{$post->image}}</td>
+            <td><form action="{{route("admin.posts.destroy", $post->id)}}" method="POST">
+                @csrf
+                @method("DELETE")
+                <button type="submit" class="btn btn-primary">Delete Post</button>
+                </form>
+            </td>
          </tr>
         @endforeach
     </tbody>
   </table>
 </div>
+
 @endsection

@@ -52,17 +52,16 @@ class PostController extends Controller
                 [
                     "title" => "required|max:100",
                     "slug"=> "required|unique:posts|max:100",
-                    // "password" => "required|max:150",
                     "description" => "required",
                     // "image" => "image|max:200"
                 ]
             );
             // make user object instance
             $post = new Post;
+
             $post->user_id = $user_id;
             $post->title = $data["title"];
             $post->slug = $data["slug"];
-            // $post->password = $data["password"];
             $post->description = $data["description"];
             // $post->image = $data["image"];
             
@@ -96,8 +95,9 @@ class PostController extends Controller
      */
     public function edit($id)
     {
+        $post = Post::find($id);
         // return the edit view for the single object id
-        return view('admin.edit', compact('user'));
+        return view('admin.edit', compact('post'));
     }
 
     /**
@@ -111,34 +111,31 @@ class PostController extends Controller
     {   
         // request all objects data
         $data = $request->all();
-        // find a specific object
-        $post = User::find($id);
-            // make validations
-            $request->validate(
+        // make validations
+        $request->validate(
                 [
-                    "name" => "required|max:100",
-                    "email"=> ["required",
+                    "title" => "required|max:100",
+                    "slug"=> ["required",
                                 Rule::unique('posts')->ignore($id),
-                                "max:300"
-                              ],
-                    "password"=> "required|max:150",
+                                "max:100"
+                             ], 
                     "description" => "required",
-                    "image" => "image|max:200"
+                    // "image" => "image|max:200"
                 ]
             );
-            // make user object instance
-            $post = new Post;
-            
+        
+            // find a specific object
+            $post = Post::find($id);
+
             $post->title = $data["title"];
             $post->slug = $data["slug"];
-            $post->password = $data["password"];
             $post->description = $data["description"];
-            $post->image = $data["image"];
+            // $post->image = $data["image"];
             
-            // save the object modify
-            $post->save();
+            // update the object modify
+            $post->update();
             // redirect the objects to the index route
-            return redirect()->route("admin.index", $id);
+            return redirect()->route("admin.posts.index", $post);
     }
 
     /**
@@ -154,6 +151,6 @@ class PostController extends Controller
         // delete the selected object
         $post->delete();
         // redirect index route
-        return redirect()->route("admin.index");
+        return redirect()->route("admin.posts.index");
     }
 }
