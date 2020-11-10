@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    Show
+    Show Guest posts
 @endsection
 @section('content')
 <div class="jumbotron">

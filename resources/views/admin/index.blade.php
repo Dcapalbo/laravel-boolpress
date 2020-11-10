@@ -8,14 +8,18 @@
     <thead>
       <tr>
         <th scope="col">Name</th>
-        <th scope="col">Email</th>
+        <th scope="col">Description</th>
+        <th scope="col">Slug</th>
+        <th scope="col">Image</th>
       </tr>
     </thead>
     <tbody>
-        @foreach ($users as $user)
+        @foreach ($posts as $post)
          <tr>
-            <td>{{$user->name}}</td>
-            <td>{{$user->email}}</td>
+            <td>{{$post->title}}</td>
+            <td>{{$post->description}}</td>
+            <td>{{$post->slug}}</td>
+            <td>{{$post->image}}</td>
          </tr>
         @endforeach
     </tbody>

@@ -13,7 +13,7 @@ class PostTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        for ($i = 0; $i < 10 ; $i++) { 
+        for ($i = 0; $i < 40 ; $i++) { 
             
             $newUser = User::inRandomOrder()->first();
             
@@ -22,7 +22,7 @@ class PostTableSeeder extends Seeder
             $newPost->user_id = $newUser->id;
             $newPost->title = $faker->sentence(5, true);
             $newPost->slug = $faker->slug();
-            $newPost->description = $faker->paragraph(3, true);
+            $newPost->description = $faker->paragraph(2, true);
 
             $newPost->save();
         }

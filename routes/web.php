@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth; 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,11 +20,11 @@ Route::get('/', function () {
 Auth::routes();
 
 
-Route::prefix('admin')->name('admin')->namespace('Admin')->middleware('auth')->group(function() {
-    Route::resource('users', 'PostController');
+Route::prefix('admin')->name('admin.')->namespace('Admin')->middleware('auth')->group(function() {
+    Route::resource('posts', 'PostController');
 });
 
-Route::prefix('guest')->name('guest')->namespace('Guest')->middleware('auth')->group(function() {
+Route::prefix('guest')->name('guest.')->namespace('Guest')->middleware('auth')->group(function() {
     Route::resource('posts', 'PostController');
 });
 
