@@ -47,10 +47,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        // find a single objetc with the find method
-        $post = Post::find($id);
-        // return the show view
-        return view("guest.show", compact("post"));
+    
     }
 
     /**

@@ -7,11 +7,11 @@
 <table class="table">
     <thead>
       <tr>
-        <th scope="col">Name</th>
+        <th scope="col">Title</th>
         <th scope="col">Description</th>
         <th scope="col">Slug</th>
         <th scope="col">Image</th>
-        <th scope="col">Delete Post</th>
+        <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -21,6 +21,8 @@
             <td>{{$post->description}}</td>
             <td>{{$post->slug}}</td>
             <td>{{$post->image}}</td>
+            <td><a href="{{route('admin.posts.show', $post->id)}}" target="_blank">View Post</a></td>
+            <td><a href="{{route('admin.posts.edit', $post->id)}}" target="_blank">Edit Post</a></td>
             <td><form action="{{route("admin.posts.destroy", $post->id)}}" method="POST">
                 @csrf
                 @method("DELETE")
@@ -31,6 +33,7 @@
         @endforeach
     </tbody>
   </table>
+  <a href="{{route('admin.posts.create')}}" target="_blank">Create Post</a>
 </div>
 
 @endsection
