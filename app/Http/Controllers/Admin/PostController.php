@@ -53,7 +53,7 @@ class PostController extends Controller
                 [
                     "title" => "required|max:100",
                     "slug"=> "required|unique:posts|max:100",
-                    "description" => "required",
+                    "description" => "required|max:1000",
                     "image" => "image"
                 ]
             );

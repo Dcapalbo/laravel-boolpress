@@ -19,7 +19,7 @@
         <label for="description">Description</label>
         <textarea class="form-control" name="description" id="description" placeholder="insert your description" cols="50" rows="10" value="{{old('description')}}"></textarea>
     </div>
-    <button type="submit" class="btn btn-primary">Edit</button>
+    <button type="submit" class="btn btn-primary">Edit Post</button>
   </form>
   @if ($errors->any())
     <div class="alert alert-danger">

@@ -21,7 +21,7 @@ class CreatePostsTable extends Migration
             ->on('users');
             $table->string('title', 150);
             $table->string('slug', 100);
-            $table->string('description', 300);
+            $table->string('description', 1000);
             $table->timestamps();
         });
     }
