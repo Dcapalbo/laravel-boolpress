@@ -71,7 +71,7 @@ class PostController extends Controller
             $post->save();
 
             // redirect the objects to the index route
-            return redirect()->route("admin.posts.index");
+            return redirect()->route("admin.posts.show", $post->slug    );
         }
     }
 
@@ -136,7 +136,7 @@ class PostController extends Controller
             // update the object modify
             $post->update();
             // redirect the objects to the index route
-            return redirect()->route("admin.posts.index", $post);
+            return redirect()->route("admin.posts.show", $post->id);
     }
 
     /**
