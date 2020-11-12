@@ -71,7 +71,7 @@ class PostController extends Controller
             $post->save();
 
             // redirect the objects to the index route
-            return redirect()->route("admin.posts.show", $post->slug    );
+            return redirect()->route("admin.posts.show", $post->slug);
         }
     }
 
@@ -81,10 +81,11 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
         // find a single objetc with the find method
-        $post = Post::find($id);
+        $post = Post::find($slug);
+        $slug = $post->slug;
         // return the show view
         return view("admin.show", compact("post"));
     }
@@ -97,6 +98,7 @@ class PostController extends Controller
      */
     public function edit($id)
     {
+
         $post = Post::find($id);
         // return the edit view for the single object id
         return view('admin.edit', compact('post'));
@@ -147,7 +149,7 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        // find a specific object
+        // find a specific objecth
         $post = Post::find($id);
         // delete the selected object
         $post->delete();

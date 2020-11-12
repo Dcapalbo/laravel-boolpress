@@ -24,8 +24,8 @@
             <td>{{$post->title}}</td>
             <th>Description</th>
             <td>{{$post->description}}</td>
+            <td>{{$post->comments->content}}</td>
             <td><img src="{{asset('storage/'.$post->image)}}" src="{{asset('http://via.placeholder.com/400x200')}}" width="400" height="200"></td>
-            {{-- <td>{{$post->comment->content}}</td> --}}
             <td class="flex_bottons">
               <a href="{{route('admin.posts.show', $post->id)}}" target="_blank"><button type="submit" class="btn btn-primary">View Post</button></a>
               <a href="{{route('admin.posts.edit', $post->id)}}" target="_blank"><button type="submit" class="btn btn-primary">Edit Post</button></a>
