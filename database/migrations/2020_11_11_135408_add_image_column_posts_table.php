@@ -14,7 +14,7 @@ class AddImageColumnPostsTable extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->string('image', 200)->nullable();
+            $table->string('image', 200)->default('https://via.placeholder.com/300.png/09f/fff%20C/O%20https://placeholder.com/');
         });
     }
 

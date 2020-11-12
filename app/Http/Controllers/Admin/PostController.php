@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Post;
+use App\Comment;
 use App\User;
 
 class PostController extends Controller
@@ -81,11 +82,10 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function show($id)
     {
         // find a single objetc with the find method
-        $post = Post::find($slug);
-        $slug = $post->slug;
+        $post = Post::find($id);
         // return the show view
         return view("admin.show", compact("post"));
     }

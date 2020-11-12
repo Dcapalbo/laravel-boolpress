@@ -28,7 +28,7 @@ class PostTableSeeder extends Seeder
 
             $newPost->save();
 
-            $tags = Tag ::inRandomOrder()->limit(2)->get();
+            $tags = Tag ::inRandomOrder()->limit(5)->get();
             $newPost->tags()->sync($tags);
         }
     }
