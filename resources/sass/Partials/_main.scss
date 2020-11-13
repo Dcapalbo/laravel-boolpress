@@ -2,9 +2,11 @@
 main {
     margin: 50px;
 }
+// display
 .display-4 {
     text-align: center;
 }
+// container fluid
 .container-fluid {
     position: relative;
     .title_item {
@@ -14,18 +16,34 @@ main {
         font-family: $firstFont;
     }
 }
+// container flex
 .container_flex {
     margin: 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    // wrapper
+    .wrapper {
+        margin: 20px 0;
+        width: 50%;
+        display: flex;
+        li {
+            display: inline-block;
+        }
+    }
+    // tags
+    .tags {
+        text-decoration: underline;
+        color: lightblue;
+    }
     h3, li {
         font-family: $secondFont;
         padding-top: 5px;
         padding-bottom: 5px;
     }
 }
+// flex bottons style
 .flex_bottons {
     display: flex;
     justify-content: center;
@@ -33,4 +51,8 @@ main {
     a, form, button {
         padding: 10px;
     }
+}
+// btn style
+.btn-primary {
+    margin-top: 25px;
 }

@@ -5,7 +5,13 @@
 @section('content')
 <div class="container">
   <div class="container-fluid">
-    <li><img src="{{asset('storage/'.$post->image)}}" src="{{asset('https://via.placeholder.com/300.png/09f/fff%20C/O%20https://placeholder.com/')}}" width="100%" height="600"></li>
+    <li>
+      @if ($post->image == null)
+        <img src="https://via.placeholder.com/350" width="100%" height="500px" alt="image">
+      @else
+        <img src="{{asset('storage/'.$post->image)}}" alt="">
+      @endif
+    </li>
     <li class="title_item">Title: {{$post->title}}</li>
 </div>
 <ul class="container container_flex">

@@ -88,6 +88,21 @@ main {
   align-items: flex-start;
 }
 
+.container_flex .wrapper {
+  margin: 20px 0;
+  width: 50%;
+  display: flex;
+}
+
+.container_flex .wrapper li {
+  display: inline-block;
+}
+
+.container_flex .tags {
+  text-decoration: underline;
+  color: lightblue;
+}
+
 .container_flex h3,
 .container_flex li {
   font-family: "Ubuntu", sans-serif;
@@ -105,6 +120,10 @@ main {
 .flex_bottons form,
 .flex_bottons button {
   padding: 10px;
+}
+
+.btn-primary {
+  margin-top: 25px;
 }
 
 /*!

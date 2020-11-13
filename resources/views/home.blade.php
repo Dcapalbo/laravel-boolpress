@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -19,5 +18,6 @@
             </div>
         </div>
     </div>
+    <a href="{{route('admin.posts.index')}}" target="_blank"><button type="submit" class="btn btn-primary">View All Posts</button></a>
 </div>
 @endsection
